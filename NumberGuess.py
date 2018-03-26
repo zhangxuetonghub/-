@@ -8,7 +8,7 @@ def main():
     输入最小数和最大数，计算机从区间随机选择一个数让你猜，猜大告诉你大于，猜小告诉你小于，直到猜中为止，最后告诉你所猜次数
     """
     smaller = int(input("请输入最小数:"))
-    larger = int(put("请输入最大数:"))
+    larger = int(input("请输入最大数:"))
     MyNumber = random.randint(smaller,larger)
     count = 0
     while True:
