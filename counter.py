@@ -10,7 +10,7 @@ class Counter(object):
         Counter.instances += 1
         self.reset()
         
-    # 设置方法
+    # 修改器方法
     def reset(self):
         self._value = 0
         
@@ -20,7 +20,7 @@ class Counter(object):
     def decrement(self, amount = 1):
         self._value -= amount
         
-    # 访问方法
+    # 访问器方法
     def getValue(self):
         return self._value
         
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     c1.reset()
     print(c1)
     c2 = Counter()
-    print(Counter.instences)
+    print(Counter.instances)
     print(c1 == c1)
     print(c1 == 0)
     print(c1 == c2)
