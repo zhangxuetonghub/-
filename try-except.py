@@ -16,5 +16,5 @@ def safeIntegerInput(propmt):
 
 
 if __name__ == "__main__":
-    i = safeIntegerInput("enter you age")
+    i = safeIntegerInput("请输入你的年龄：")
     print(i)
