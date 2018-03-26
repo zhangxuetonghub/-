@@ -26,6 +26,9 @@ class Patron:
     def getname(self):
         return self._name
 
+    def getbooks(self):
+        return self._books
+
     def borrow(self,book):
         if book.getonread() == self._name:
             print("你已经借了这本书，还没有归还！")
@@ -46,7 +49,11 @@ class Patron:
                 book.setreader(self._name)
                 book._waitreaders.pop(0)
             else:
-                print("还没有到你的排队位置")
+                if self in book.getwaitreader():
+                    print("还没有到你的排队位置")
+                else:
+                    book.addwaitreader(self)
+                    print("已经为你排队")
 
     def sendback(self, book):
         if book.getonread() != self._name or self._books == 0:
@@ -62,10 +69,20 @@ if __name__ == '__main__':
     b4 = Book('shengwu','zxt')
     p1 = Patron('zhangxutong')
     p2 = Patron('kongxiaojuan')
+    p3 = Patron('zhangjiani')
     p1.borrow(b1)
     p1.borrow(b2)
     p1.borrow(b3)
-    p2.borrow(b3)
-    p1.sendback(b3)
-    p2.borrow(b3)
-    print(b1.getonread(),b2.getonread(),b3.getonread(),b4.getonread())
+    p2.borrow(b1)
+    p3.borrow(b1)
+    p1.sendback(b1)
+    p2.borrow(b1)
+    p3.borrow(b1)
+    p2.sendback(b1)
+    p1.borrow(b1)
+    p3.borrow(b1)
+    p3.sendback(b1)
+    p1.borrow(b1)
+    p1.borrow(b4)
+
+    print(p1.getbooks(),b1.getwaitreader())
