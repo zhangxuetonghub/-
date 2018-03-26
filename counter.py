@@ -10,7 +10,7 @@ class Counter(object):
         Counter.instances += 1
         self.reset()
         
-    # 修改器方法
+    # 修改器方法，通过修改对象的实例变量，来修改或改变对象的内部状态
     def reset(self):
         self._value = 0
         
@@ -20,7 +20,7 @@ class Counter(object):
     def decrement(self, amount = 1):
         self._value -= amount
         
-    # 访问器方法
+    # 访问器方法，直接查看或使用对象的实力变量的值，而不会改变它们
     def getValue(self):
         return self._value
         
