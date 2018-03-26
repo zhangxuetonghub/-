@@ -11,7 +11,7 @@ def safeIntegerInput(propmt):
         number = int(inputString)
         return number
     except ValueError:
-        print("输入的值{0}有误，请重新输入".format(inputString))
+        print("输入的整数值 {0} 有误，请重新输入".format(inputString))
         return safeIntegerInput(propmt)
 
 
