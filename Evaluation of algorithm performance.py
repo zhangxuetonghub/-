@@ -4,14 +4,14 @@ ProblemSize = 10000000
 print('{0:<13}{1:<16}'.format('ProbleSize', 'Seconds'))
 for count in range(5):
     
-    start = time.time()
+    start = time.clock()
     # 算法开始
     work = 1
     for x in range(ProblemSize):
         work += 1
         work -= 1
     # 算法结束
-    elapsed = time.time() - start
+    elapsed = time.clock() - start
     
     print('{0:<13}{1:<16.3}'.format(ProblemSize, elapsed))
     ProblemSize *= 2
