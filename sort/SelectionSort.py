@@ -26,3 +26,4 @@ if __name__ == '__main__':
     l = [1,8,2,3,7,4,5]
     selectionSort(l)
     print(l)
+# 嵌套了循环 算法的复杂度为O(n2)
