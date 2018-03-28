@@ -12,6 +12,7 @@ if __name__ == '__main__':
     print(sequentialSearch(5,l))
     print(sequentialSearch(8,l))
 
+# 模拟 in 操作
 # 最好情况 第一项就找到       O(1) 
 # 最坏情况最后一项才找到      O(n) 
 # 平均情况（（n+1)/2         O(n)
