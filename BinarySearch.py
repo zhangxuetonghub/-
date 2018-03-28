@@ -2,17 +2,15 @@ def binarySearch(target, sortedLyst):
     """二叉搜索"""
     left = 0
     right = len(sortedLyst) - 1
-    timer = 0
     while left < right:
-        timer += 1
         midpoint = (left + right) // 2
         if target == sortedLyst[midpoint]:
-            return midpoint,timer
+            return midpoint
         elif target < sortedLyst[midpoint]:
             right = midpoint - 1
         else:
             left = midpoint + 1
-    return -1,timer
+    return -1
 
 if __name__ == '__main__':
     l = list(range(1000000))
