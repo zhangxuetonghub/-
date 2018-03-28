@@ -12,3 +12,4 @@ def indexOfMin(lyst):
 if __name__ == '__main__':
     l = [9,3,6,3,3,8,44,1,66,7788]
     print(indexOfMin(l))  
+# 模拟内建函数 min（）
