@@ -10,6 +10,7 @@ def sequentialSearch(target, lyst):
 if __name__ == '__main__':
     l = [1,2,3,4,5,6]
     print(sequentialSearch(5,l))
+    print(sequentialSearch(8,l))
 
 # 最好情况 第一项就找到       O(1) 
 # 最坏情况最后一项才找到      O(n) 
