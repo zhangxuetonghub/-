@@ -1,0 +1,1 @@
+def binarySearch(target, sortedLyst):
