@@ -52,3 +52,32 @@ if __name__ == '__main__':
     print(l)
 
 # 算法复杂度O(nlog2n)
+
+
+# 常规实现
+# def partition(li, start, end):
+#     mid = li[start]
+#     left = start
+#     right = end
+
+#     while left < right:
+#         while left < right and li[right] > mid:
+#             right -= 1
+#         li[left] = li[right]
+#         while left < right and li[left] <= mid:
+#             left += 1
+#         li[right] = li[left]
+#     li[left] = mid
+#     return left
+
+
+# def quicksort(li):
+#     quick_sort(li, 0, len(li) - 1)
+
+
+# def quick_sort(li, start, end):
+#     mid = partition(li, start, end)
+#     if mid > start and mid < end:
+#         quick_sort(li, start, mid - 1)
+#         quick_sort(li, mid + 1, end)
+#     return li
