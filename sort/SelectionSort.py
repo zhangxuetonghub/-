@@ -13,7 +13,7 @@ def selectionSort(lyst):
                 minIndex = j
             j += 1
         if minIndex != i:
-            swap(lyst, minIndex, i)
+            lyst[i], lyst[minIndex] = lyst[minIndex], lyst[i]
         i += 1
         
 # 排序思路 (>_<)
