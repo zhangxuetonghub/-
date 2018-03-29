@@ -30,3 +30,4 @@ if __name__ == '__main__':
     l = [1,4,2,6,3,9,5]
     bubblesort(l)
     print(l)
+# 冒泡排序的复杂度O(n2)
