@@ -5,3 +5,23 @@
 和其他的排序算法一样，插入排序包含两个循环。外围的循环遍历从1到n-1的位置。对于这个循环的每一个位置i，我们都保存该项并且从i-1项开始内部循环。对于内部
 循环中的每一个位置就，我们都将该项移动到位置j+1,直到找到了给保存的项（第i项）的插入位置。
 """
+def insertionSort(lyst):
+    i = 1
+    while i < len(lyst):
+        item = lyst[i]
+        j = i
+        while j > 0:
+            if item < lyst[j - 1]:
+                lyst[j] = lyst[j - 1]
+            else:
+                lyst[j] = item
+                break
+            j -= 1
+        i += 1
+
+
+if __name__ == '__main__':
+    l = [1,22, 9, 3, 5, 6, 2, 4, 7, 8, 22, 12, 99, 10, 245, 33, 55, 77, 22, 58, 999]
+    insertionSort(l)
+    print(l)
+# 算法复杂度O(n2)
