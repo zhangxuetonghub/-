@@ -60,5 +60,23 @@ if __name__ == '__main__':
             probe = probe.next
         probe.next = newNode
         
-    # 
+    # 从开始处删除    时间和内存都是常数
+    removeItem = head.data
+    head = head.next
+    return removeItem
+
+    # 从末尾删除     时间和内存上都是线性的
+    removeItem = head.data
+    if head.next is None:
+        head = None
+    else:
+        probe = head
+        while probe.next.next != None:
+            probe = probe.next
+        removeItem = probe.next.data
+        probe.next = None
+    return removeItem
+
+
+    
     
