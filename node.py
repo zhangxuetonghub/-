@@ -7,25 +7,58 @@ class Node(object):
         self.next = next
         
 if __name__ == '__main__':
-    # 创建一个单链表
-    head = None
-    for count in range(1, 6):
-        head = Node(count, head)
-    # 遍历一个单链表
-    while head != None:
-        print(head.data)
-        head = head.next
-   
-    # 将一个列表中的项，转移到一个单链表，保持项的顺序不变       
-    l = list(range(1, 10))
-    print(l)
-    head = None
-    for i in l:
-        if head == None:
-            head = Node(i, None)
-        else:
-            temp = head
-            temp1 = None
-            while temp != None:
-                temp, temp1 = temp.next, temp
-            temp1.next = Node(i, None)
+    
+    # 遍历    时间上是线性的，并不需要额外的内存
+    probe = head
+    while probe != None:
+        < user or modify probe.data >
+        probe = probe.next
+        
+    # 搜索    也是线性的
+    probe = head
+    while probe != None and targetItem != probe.data:
+        probe = probe.next
+    if probe != None:
+        return True
+    else:
+        return False
+    
+    # 访问给定位置   不支持随机访问，同搜索，线性的
+    probe = head
+    while index > 0:
+        probe = prebo.next
+        index -= 1
+    return probe.data
+
+    # 替换 也是利用遍历模式
+    （1）替换给定项，同搜索
+    probe = head
+    while probe != None and targetItem != probe.data:
+        probe = probe.next
+    if probe != None:
+        probe.data = newItem
+        return True
+    else:
+        return False
+    （2）替换给定位置，同访问给定位置
+    probe = head
+    while index > 0:
+        probe = prebo.next
+        index -= 1
+    probe.data = newItem
+    
+    # 开始处插入 时间和内存都是常数
+    head = Node(newItem, head)
+    
+    # 在末尾插入
+    newNode = Node(newItem)
+    if head is None:
+        head = newNode
+    else:
+        probe = head
+        while probe.next != None:
+            probe = probe.next
+        probe.next = newNode
+        
+    # 
+    
