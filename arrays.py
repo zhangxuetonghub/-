@@ -8,7 +8,7 @@ class Array(object):
     """定义一个数组类"""
     
     def __init__(self, capacity, fillValue = None):
-        """capacity是数组的静态大小， fillValue是数组的填充值"""
+        """capacity大小， fillValue是填充值"""
         self._items = list()
         for count in range(capacity):
             self._items.append(fillValue)
