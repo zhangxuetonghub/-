@@ -85,7 +85,7 @@ else:
     while index > 1 and probe.next != None:
         probe = probe.next
         index - = 1
-        probe.next = Node(newItem, probe.next)
+    probe.next = Node(newItem, probe.next)
             
     
 # 任意位置删除 时空线性
