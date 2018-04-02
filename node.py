@@ -77,6 +77,29 @@ if __name__ == '__main__':
         probe.next = None
     return removeItem
 
-
+    # 任意位置插入
+    if head is None or index <= 0:
+        head = Node(newitem， head)
+    else:
+        probe = head
+        while index > 1 and probe.next != None:
+            probe = probe.next
+            index - = 1
+            probe.next = Node(newItem, probe.next)
+            
+    
+    # 任意位置删除
+    if index <= 0 or head.next is None:
+        removeItem = head.data
+        head = head.next
+        return removeItem
+    else:
+        probe = head
+        while index > 1 and probe.next.next != None:
+            probe = probe.next
+            index -= 1
+        removeItem = probe.next.data
+        probe.next = probe.next.next
+        return removeItem
     
     
