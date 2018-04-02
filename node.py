@@ -6,7 +6,7 @@ class Node(object):
         self.data = data
         self.next = next
         
-# 单链表操作
+# 单链表操作---------------------------------------------
     
 # 遍历    时空线性
 probe = head
@@ -101,5 +101,3 @@ else:
     removeItem = probe.next.data
     probe.next = probe.next.next
     return removeItem
-    
-    
