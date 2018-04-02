@@ -6,15 +6,15 @@ class Node(object):
         self.data = data
         self.next = next
         
-if __name__ == '__main__':
+# 单链表操作
     
-    # 遍历    时间上是线性的，并不需要额外的内存
+    # 遍历    时空线性
     probe = head
     while probe != None:
         < user or modify probe.data >
         probe = probe.next
         
-    # 搜索    也是线性的
+    # 搜索    时空线性
     probe = head
     while probe != None and targetItem != probe.data:
         probe = probe.next
@@ -23,14 +23,14 @@ if __name__ == '__main__':
     else:
         return False
     
-    # 访问给定位置   不支持随机访问，同搜索，线性的
+    # 访问给定位置  时空线性
     probe = head
     while index > 0:
         probe = prebo.next
         index -= 1
     return probe.data
 
-    # 替换 也是利用遍历模式
+    # 替换 遍历模式 时空线性
     （1）替换给定项，同搜索
     probe = head
     while probe != None and targetItem != probe.data:
@@ -47,10 +47,10 @@ if __name__ == '__main__':
         index -= 1
     probe.data = newItem
     
-    # 开始处插入 时间和内存都是常数
+    # 开始处插入 时空常数
     head = Node(newItem, head)
     
-    # 在末尾插入
+    # 在末尾插入 时空线性
     newNode = Node(newItem)
     if head is None:
         head = newNode
@@ -60,12 +60,12 @@ if __name__ == '__main__':
             probe = probe.next
         probe.next = newNode
         
-    # 从开始处删除    时间和内存都是常数
+    # 从开始处删除 时空常数
     removeItem = head.data
     head = head.next
     return removeItem
 
-    # 从末尾删除     时间和内存上都是线性的
+    # 从末尾删除 时空线性
     removeItem = head.data
     if head.next is None:
         head = None
@@ -77,7 +77,7 @@ if __name__ == '__main__':
         probe.next = None
     return removeItem
 
-    # 任意位置插入
+    # 任意位置插入 时空线性
     if head is None or index <= 0:
         head = Node(newitem， head)
     else:
@@ -88,7 +88,7 @@ if __name__ == '__main__':
             probe.next = Node(newItem, probe.next)
             
     
-    # 任意位置删除
+    # 任意位置删除 时空线性
     if index <= 0 or head.next is None:
         removeItem = head.data
         head = head.next
