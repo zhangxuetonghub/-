@@ -101,12 +101,13 @@ class ArrayBag:
             if targetItem == item:
                 break
             targetindex += 1
-        # 将要删除的元素的后面的所有元素都向前移动一个位置，减小包的长度
+        # 待移除元素的后的所有元素都向前移一个位置
         for i in range(targetindex, len(self) - 1):
             self._items[i] = self._items[i + 1]
         self._size -= 1
         # 判断是否浪费了大量的内存，如果有，数组减半
-        if self._size < len(self._items) // 4 and len(self._items) >= ArrayBag.DEFALUT_SIZE * 2:
+        if self._size < len(self._items) // 4 and \
+                len(self._items) >= ArrayBag.DEFALUT_SIZE * 2:
             temp = Array(len(self._items) // 2)
             for i in range(self._size):
                 temp[i] = self._items[i]
