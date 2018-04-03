@@ -2,43 +2,40 @@ from node import Node
 
 
 class LinkedBag:
-    """Interface for all bag types."""
+    """包的链表实现"""
 
     # Constructor
     def __init__(self, sourceCollection=None):
         """
-        sets the initial state of self, which
-        includes the contents of sourceCollection,
-        if it's present.
+        初始化
         """
         self.clear()
         if sourceCollection:
             for item in sourceCollection:
                 self.add(item)
 
-    # Accessor methods
+    # 访问器方法
     def isEmpty(self):
         """
-        Retruns True if len(self) == 0,
-        or False otherwise.
+        查看包是否为空
         """
         return len(self) == 0
 
     def __len__(self):
         """
-        Returns the number of items in self.
+        返回包的长度，对实例使用len（）调用
         """
         return self._size
 
     def __str__(self):
         """
-        Retruns the string representation of self.
+        返回实例的字符串表示
         """
         return '{' + ','.join(map(str, self)) + '}'
 
     def __iter__(self):
         """
-        Supports iteration over a view of self.
+        支持迭代，生成器函数（生成器一定是一个迭代器）
         """
         cursor = self._items
         while cursor != None:
@@ -47,8 +44,7 @@ class LinkedBag:
 
     def __add__(self, other):
         """
-        Returns a new bag containing the contents
-        of self and other.
+        运算符“+”重载
         """
         result = LinkedBag(self)
         for item in other:
@@ -57,8 +53,7 @@ class LinkedBag:
 
     def __eq__(self, other):
         """
-        Returns True if self equals other,
-        or False otherwise.
+        运算符“==”重载
         """
         if self is other: return True
         if type(self) != type(other) or \
@@ -69,23 +64,24 @@ class LinkedBag:
                 return False
         return True
 
-    # Mutator methods
+    # 修改器方法
     def clear(self):
         """
-        Makes self becom empty.
+        清空包
         """
         self._size = 0
         self._items = None
 
     def add(self, item):
         """
-        Add item to self.
+        向包里添加新元素
         """
         self._items = Node(item, self._items)
         self._size += 1
 
     def remove(self, item):
         """
+        从包里移除元素
         Precondition: item is in self.
         Raises: KeyError if item is not in self.
         Postcondition: item is removed from self.
