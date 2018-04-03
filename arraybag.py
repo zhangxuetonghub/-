@@ -1,16 +1,14 @@
 from arrays import Array
 
 class ArrayBag:
-    """Interface for all bag types."""
+    """包的数组实现"""
 
     DEFALUT_SIZE = 10
 
     # Constructor
     def __init__(self, sourceCollection=None):
         """
-        sets the initial state of self, which
-        includes the contents of sourceCollection,
-        if it's present.
+        初始化
         """
         self.clear()
         if sourceCollection:
@@ -20,26 +18,25 @@ class ArrayBag:
     # Accessor methods
     def isEmpty(self):
         """
-        Retruns True if len(self) == 0,
-        or False otherwise.
+        查看包是否为空
         """
         return len(self) == 0
 
     def __len__(self):
         """
-        Returns the number of items in self.
+        返回包的长度
         """
         return self._size
 
     def __str__(self):
         """
-        Retruns the string representation of self.
+        返回包字符串表示
         """
         return '{' + ','.join(map(str, self)) + '}'
 
     def __iter__(self):
         """
-        Supports iteration over a view of self.
+        支持迭代，返回生成器（生成器一定是一个迭代器）
         """
         cursor = 0
         while cursor < len(self):
@@ -48,8 +45,7 @@ class ArrayBag:
 
     def __add__(self, other):
         """
-        Returns a new bag containing the contents
-        of self and other.
+        运算符“+”重载
         """
         result = ArrayBag(self)
         for item in other:
@@ -58,8 +54,7 @@ class ArrayBag:
 
     def __eq__(self, other):
         """
-        Returns True if self equals other,
-        or False otherwise.
+        运算符“==”重载
         """
         if self is other:return True
         if type(self) != type(other) or \
@@ -73,14 +68,14 @@ class ArrayBag:
     # Mutator methods
     def clear(self):
         """
-        Makes self becom empty.
+        清空包
         """
         self._size = 0
         self._items = Array(ArrayBag.DEFALUT_SIZE)
 
     def add(self, item):
         """
-        Add item to self.
+        向包里添加新元素
         """
         if self._size == len(self._items):
             temp = Array(self._size * 2)
@@ -92,24 +87,25 @@ class ArrayBag:
 
     def remove(self, item):
         """
+        从包里移除元素
         Precondition: item is in self.
         Raises: KeyError if item is not in self.
         Postcondition: item is removed from self.
         """
-        # Check precondition and raise if necessary
+        # 检查要移除的元素是否在包里，如果没有，抛出异常
         if not item in self:
             raise KeyError(str(item) + 'not in bag')
-        # Search for index of target item
+        # 搜索要删除的元素的位置
         targetindex = 0
         for targetItem in self:
             if targetItem == item:
                 break
             targetindex += 1
-        #
+        # 将要删除的元素的后面的所有元素都向前移动一个位置，减小包的长度
         for i in range(targetindex, len(self) - 1):
             self._items[i] = self._items[i + 1]
         self._size -= 1
-        #
+        # 判断是否浪费了大量的内存，如果有，数组减半
         if self._size < len(self._items) // 4 and len(self._items) >= ArrayBag.DEFALUT_SIZE * 2:
             temp = Array(len(self._items) // 2)
             for i in range(self._size):
