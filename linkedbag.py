@@ -1,7 +1,7 @@
 from node import Node
+from abstractbag import AbstractBag
 
-
-class LinkedBag:
+class LinkedBag(AbstractBag):
     """包的链表实现"""
 
     # Constructor
@@ -9,30 +9,10 @@ class LinkedBag:
         """
         初始化
         """
-        self.clear()
-        if sourceCollection:
-            for item in sourceCollection:
-                self.add(item)
+        self._items = None
+        AbstractBag.__init__(self, sourceCollection)
 
     # 访问器方法
-    def isEmpty(self):
-        """
-        查看包是否为空
-        """
-        return len(self) == 0
-
-    def __len__(self):
-        """
-        返回包的长度，对实例使用len（）调用
-        """
-        return self._size
-
-    def __str__(self):
-        """
-        返回实例的字符串表示
-        """
-        return '{' + ','.join(map(str, self)) + '}'
-
     def __iter__(self):
         """
         支持迭代，生成器函数（生成器一定是一个迭代器）
@@ -41,28 +21,6 @@ class LinkedBag:
         while cursor != None:
             yield cursor.data
             cursor = cursor.next
-
-    def __add__(self, other):
-        """
-        运算符“+”重载
-        """
-        result = LinkedBag(self)
-        for item in other:
-            result.add(item)
-        return result
-
-    def __eq__(self, other):
-        """
-        运算符“==”重载
-        """
-        if self is other: return True
-        if type(self) != type(other) or \
-                len(self) != len(other):
-            return False
-        for item in self:
-            if not item in other:
-                return False
-        return True
 
     # 修改器方法
     def clear(self):
