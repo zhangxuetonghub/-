@@ -1,7 +1,7 @@
 from arrays import Array
 
 class ArrayBag:
-    """包的数组实现"""
+    """包的数组实现类"""
 
     DEFALUT_SIZE = 10
 
@@ -112,3 +112,48 @@ class ArrayBag:
             for i in range(self._size):
                 temp[i] = self._items[i]
             self._items = temp
+
+            
+class ArraySortedBag(ArrayBag):
+    """
+    通过继承创建一个数组实现的有序包类
+    """
+
+    # Constructor
+    def __init__(self, sourceCollection=None):
+        ArrayBag.__init__(self, sourceCollection)
+    
+    # 增加方法 “in”操作
+    def __contains__(self, item):
+        """return True if item is in self, or Return False"""
+        left = 0
+        right = len(self) - 1
+        while left <= right:
+            midPoint = (left + right) // 2
+            if self._items[midPoint] == item:
+                return True
+            elif self._items[midPoint] > item:
+                right = midPoint - 1
+            else:
+                left = midPoint + 1
+        return False
+
+    # 改写add方法，
+    def add(self, item):
+        if self._size == len(self._items):
+            temp = Array(self._size * 2)
+            for i in range(self._size):
+                temp[i] = self._items[i]
+            self._items = temp
+
+        #
+        if self.isEmpty() or item >= self._items[len(self) - 1]:
+            ArrayBag.add(self, item)
+        else:
+            targetIndex = 0
+            while item > self._items[targetIndex]:
+                targetIndex += 1
+            for i in range(len(self), targetIndex, -1):
+                self._items[i] = self._items[i - 1]
+            self._items[targetIndex] = item
+            self._size += 1
