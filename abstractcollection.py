@@ -4,7 +4,7 @@ class AbstractCollection:
     # Constructor
     def __init__(self, sourceCollection=None):
         """
-
+        初始化
         """
         self._size = 0
         if sourceCollection:
@@ -14,27 +14,25 @@ class AbstractCollection:
     # Accessor methods
     def isEmpty(self):
         """
-        Retruns True if len(self) == 0,
-        or False otherwise.
+        判断集合是否为空 -->bool
         """
         return len(self) == 0
 
     def __len__(self):
         """
-        Returns the number of items in self.
+        返回集合长度 -->int
         """
         return self._size
 
     def __str__(self):
         """
-        Retruns the string representation of self.
+        返回集合的字符串表示 -->str
         """
         return '{' + ','.join(map(str, self)) + '}'
 
     def __add__(self, other):
         """
-        Returns a new bag containing the contents
-        of self and other.
+        返回一个合并后的集合 -->type(self)
         """
         result = type(self)(self)
         for item in other:
@@ -43,8 +41,7 @@ class AbstractCollection:
 
     def __eq__(self, other):
         """
-        Returns True if self equals other,
-        or False otherwise.
+        判断两个集合是否相等 重载运算符“==”
         """
         if self is other: return True
         if type(self) != type(other) or \
@@ -54,6 +51,3 @@ class AbstractCollection:
             if not item in other:
                 return False
         return True
-
-    def clone(self):
-        return self
