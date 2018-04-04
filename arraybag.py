@@ -1,39 +1,18 @@
 from arrays import Array
+from abstractbag import AbstractBag
 
-class ArrayBag:
+class ArrayBag(AbstractBag):
     """包的数组实现类"""
 
     DEFALUT_SIZE = 10
 
     # Constructor
     def __init__(self, sourceCollection=None):
-        """
-        初始化
-        """
-        self.clear()
-        if sourceCollection:
-            for item in sourceCollection:
-                self.add(item)
+        """初始化"""
+        self._items = Array(ArrayBag.DEFALUT_SIZE)
+        AbstractBag.__init__(self, sourceCollection)
 
     # Accessor methods
-    def isEmpty(self):
-        """
-        查看包是否为空
-        """
-        return len(self) == 0
-
-    def __len__(self):
-        """
-        返回包的长度
-        """
-        return self._size
-
-    def __str__(self):
-        """
-        返回包字符串表示
-        """
-        return '{' + ','.join(map(str, self)) + '}'
-
     def __iter__(self):
         """
         支持迭代，返回生成器（生成器一定是一个迭代器）
@@ -42,28 +21,6 @@ class ArrayBag:
         while cursor < len(self):
             yield self._items[cursor]
             cursor += 1
-
-    def __add__(self, other):
-        """
-        运算符“+”重载
-        """
-        result = ArrayBag(self)
-        for item in other:
-            result.add(item)
-        return result
-
-    def __eq__(self, other):
-        """
-        运算符“==”重载
-        """
-        if self is other:return True
-        if type(self) != type(other) or \
-            len(self) != len(other):
-            return False
-        for item in self:
-            if not item in other:
-                return False
-        return True
 
     # Mutator methods
     def clear(self):
