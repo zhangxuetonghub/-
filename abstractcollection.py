@@ -28,7 +28,7 @@ class AbstractCollection:
         """
         返回集合的字符串表示 -->str
         """
-        return '{' + ','.join(map(str, self)) + '}'
+        return '[' + ']['.join(map(str, self)) + ']'
 
     def __add__(self, other):
         """
