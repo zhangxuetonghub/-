@@ -6,20 +6,19 @@ class AbstractBag(AbstractCollection):
 
     # Constructor
     def __init__(self, sourceCollection=None):
-
+        """初始化"""
         AbstractCollection.__init__(self, sourceCollection)
 
     # Accessor methods
     def __str__(self):
         """
-        Retruns the string representation of self.
+        返回包的字符串表示 -->str
         """
         return '{' + ','.join(map(str, self)) + '}'
 
     def __eq__(self, other):
         """
-        Returns True if self equals other,
-        or False otherwise.
+        比较两个包是否相等 重载“==” -->bool
         """
         if self is other: return True
         if type(self) != type(other) or \
