@@ -47,7 +47,16 @@ class AbstractCollection:
         if type(self) != type(other) or \
                 len(self) != len(other):
             return False
+        
+        otherIter = iter(other)
         for item in self:
-            if not item in other:
+            if item != next(otherIter):
                 return False
         return True
+    
+#         for item in self:
+#             if not item in other:
+#                 return False
+#         return True
+         
+    
