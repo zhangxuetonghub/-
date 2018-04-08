@@ -20,7 +20,7 @@ def test(stackType):
     print('Push 11')
     s.push(11)
     print('Popping items (top to bottom):', end='')
-    while not s.isEmpty():print(s.pop, end=' ')
+    while not s.isEmpty():print(s.pop(), end=' ')
     print('\nLength:', len(s))
     print('Empty:', s.isEmpty())
     
