@@ -1,4 +1,4 @@
-from arrarstack import ArrayStack
+from arraystack import ArrayStack
 from linkedstack import LinkedStack
 
 def test(stackType):
