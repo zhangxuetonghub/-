@@ -67,8 +67,9 @@ class ArrayQueue(AbstractCollection):
             raise KeyError('The Queue is Empty')
         oldItem = self._items[self._front]
         self._front += 1
-        if self._front == len(self._items):
-            self._front = 0
+#         if self._front == len(self._items):
+#             self._front = 0
+        self._front = self._front % len(self._items)
         self._size -= 1
 
         if self._size < len(self._items) // 4 and \
