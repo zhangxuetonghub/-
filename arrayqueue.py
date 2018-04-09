@@ -57,8 +57,9 @@ class ArrayQueue(AbstractCollection):
 
         self._items[self._rear] = newItem
         self._rear += 1
-        if self._rear == len(self._items):
-            self._rear = 0
+#         if self._rear == len(self._items):
+#             self._rear = 0
+        self._rear = self._rear % len(self._items)
         self._size += 1
 
     def pop(self):
